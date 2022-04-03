@@ -1,0 +1,102 @@
+<div class="modal fade" id="userProfileFormFillModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form id="userProfileFormFill" method="POST" action="<%= api %>/user/add" novalidate>
+          <input class="form-control" type="hidden" value="true" name="activated" />
+          <div class="mb-3 row">
+            <label for="userDisplayName" class="col-md-3 col-form-label">Name</label>
+            <div class="col-md-9">
+              <input class="form-control" type="text" name="display_name" id="userDisplayName" required />
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="userUserName" class="col-md-3 col-form-label">Username</label>
+            <div class="col-md-9">
+              <input class="form-control" type="text" name="username" id="userUserName" required />
+            </div>
+          </div>
+
+          <div class="mb-3 row">
+            <label for="userEmail" class="col-md-3 col-form-label">Email</label>
+            <div class="col-md-9">
+              <input class="form-control" type="email" name="email" id="userEmail" required />
+            </div>
+          </div>
+          <div id="newUser" style="display: block">
+            <div class="mb-3 row">
+              <label for="userPassword" class="col-md-3 col-form-label">Password</label>
+              <div class="col-md-9">
+                <input class="form-control" type="password" value="" name="password" id="userPassword" required />
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="userPasswordConfirm" class="col-md-3 col-form-label py-0">Password Confirm</label>
+              <div class="col-md-9">
+                <input class="form-control" type="password" value="" name="password_confirm" id="userPasswordConfirm" required />
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="userRole" class="col-md-3 col-form-label">Role</label>
+              <div class="col-md-9">
+                <select class="form-control form-select" name="role" id="userRole">
+                  <option selected disabled>-- Role --</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div id="editUser" style="display: none">
+            <input class="form-control" type="hidden" id="userRoleId" />
+            <div class="mb-3 row">
+              <label for="userPhone" class="col-md-3 col-form-label">Telephone</label>
+              <div class="col-md-9">
+                <input class="form-control" type="tel" name="phone" id="userPhone" />
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="userAddress" class="col-md-3 col-form-label">Address</label>
+              <div class="col-md-9">
+                <input class="form-control" type="text" name="contacts.address" id="userAddress" />
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="userGender" class="col-md-3 col-form-label">Gender</label>
+              <div class="col-md-9">
+                <select class="form-select form-control" name="gender" id="userGender">
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="userBio" class="col-md-3 col-form-label">Bio</label>
+              <div class="col-md-9">
+                <input class="form-control" type="text" name="bio" id="userBio" />
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="userFacebook" class="col-md-3 col-form-label">Facebook</label>
+              <div class="col-md-9">
+                <input class="form-control" type="text" name="contacts.social_network.facebook" id="userFacebook" />
+              </div>
+            </div>
+            <div class="mb-3 row">
+              <label for="userInstagram" class="col-md-3 col-form-label">Instagram</label>
+              <div class="col-md-9">
+                <input class="form-control" type="text" name="contacts.social_network.instagram" id="userInstagram" />
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+        <button type="submit" form="userProfileFormFill" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

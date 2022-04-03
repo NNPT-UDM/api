@@ -1,0 +1,66 @@
+<div class="modal fade" id="fillQuizFormFillModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-lg modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title mt-0">Add New Fill Quiz</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="fillQuizFormFill" action="<%= api %>/quiz/add" method="POST">
+          <div class="mb-3">
+            <label class="form-label" for="formname">Description :</label>
+            <textarea
+              class="form-control"
+              name="description"
+              id="radiodescription"
+              placeholder="."
+            ></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="formname">Answer :</label>
+            <div id="js-fill-answer-wrapper">
+              <div class="mb-3 answer-fill">
+                <div class="d-flex justify-content-start align-items-center" style="gap: 10px">
+                  <input type="text" class="form-control" placeholder="" />
+                  <button type="button" class="btn-close" aria-label="Close" style="display: block"></button>
+                </div>
+              </div>
+              <div class="mb-3 answer-fill">
+                <div class="d-flex justify-content-start align-items-center" style="gap: 10px">
+                  <input type="text" class="form-control" placeholder="" />
+                  <button type="button" class="btn-close" aria-label="Close" style="display: block"></button>
+                </div>
+              </div>
+              <div class="mb-3 answer-fill">
+                <div class="d-flex justify-content-start align-items-center" style="gap: 10px">
+                  <input type="text" class="form-control" placeholder="" />
+                  <button type="button" class="btn-close" aria-label="Close" style="display: block"></button>
+                </div>
+              </div>
+              <div class="mb-3 answer-fill">
+                <div class="d-flex justify-content-start align-items-center" style="gap: 10px">
+                  <input type="text" class="form-control" placeholder="" />
+                  <button type="button" class="btn-close" aria-label="Close" style="display: block"></button>
+                </div>
+              </div>
+            </div>
+            <button
+              type="button"
+              id="fillQuizAddButton"
+              class="btn btn-success w-lg waves-effect waves-light"
+            >
+              Add Answer
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+        <button type="submit" form="fillQuizFormFill" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

@@ -1,0 +1,39 @@
+<div class="modal fade" id="userImportFormFillModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form id="userImportFormFill" method="POST" action="<%= api %>/user/import" enctype="multipart/form-data">
+          <div class="mb-3 row">
+            <label for="selectRoleImport" class="col-md-3 col-form-label">Role</label>
+            <div class="col-md-9">
+              <select class="form-select" name="role" id="selectRoleImport" required>
+                <option selected disabled>-- Role --</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3 row" id="showSelectClassroom" style="display: none;">
+            <label for="selectClassroomImport" class="col-md-3 col-form-label">Classroom</label>
+            <div class="col-md-9">
+              <select class="form-select" name="classroom" id="selectClassroomImport">
+                <option selected disabled>-- Classrooms --</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="chooseFileImport" class="col-md-3 col-form-label">Choose File</label>
+            <div class="col-md-9">
+              <input class="form-control" type="file" name="import" id="chooseFileImport" accept=".xlsx, .csv" required>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+        <button type="submit" form="userImportFormFill" class="btn btn-primary">Import</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

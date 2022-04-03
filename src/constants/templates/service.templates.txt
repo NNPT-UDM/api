@@ -1,0 +1,9 @@
+const { BaseServices } = require("../../base/services.base");
+const { TemplateModel } = require("../../models/_name.models");
+
+class TemplateServices extends BaseServices {
+	constructor() {
+		super(TemplateModel);
+	}
+}
+module.exports.TemplateServices = new TemplateServices();

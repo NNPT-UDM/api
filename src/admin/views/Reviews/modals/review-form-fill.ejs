@@ -1,0 +1,50 @@
+<div class="modal fade" id="reviewFormFillModal" tabindex="-1" role="dialog" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form id="reviewFormFill" action="<%= api %>/review/add" method="POST">
+          <input type="hidden" name="owner" id="reviewOwnerId" />
+          <div class="mb-3 row">
+            <label for="lessonIdRef" class="col-md-3 col-form-label">Lesson</label>
+            <div class="col-md-9">
+              <select class="form-select" name="lesson" id="lessonIdRef" required>
+                <option selected disabled>-- Lesson --</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="reviewTitle" class="col-md-3 col-form-label">Title</label>
+            <div class="col-md-9">
+              <input id="reviewTitle" class="form-control" type="text" name="title" required />
+            </div>
+          </div>
+          <label for="js-add-recommend-wrapper">Reviews</label>
+          <div id="js-add-recommend-wrapper">
+            <div class="mb-3 p-2 rounded border border-primary cloned-card">
+              <div class="bg-transparent border-bottom-0 d-flex justify-content-end align-items-start">
+                <button type="button" class="btn-close" aria-label="Close" style="display:none;"></button>
+              </div>
+              <div class="mt-2">
+                <input class="form-control" placeholder="Title" />
+              </div>
+              <div class="mt-2">
+                <textarea class="form-control" placeholder="Recommend"></textarea>
+              </div>
+              <div class="mt-2" id="js-clone-recommend-wrapper">
+                <button type="button" class="btn btn-success" id="btnCloneRecommendForm">Add</button>
+              </div>
+            </div>
+          </div>
+          <div id="js-recommend-wrapper"></div>
+        </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+          <button type="submit" form="reviewFormFill" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

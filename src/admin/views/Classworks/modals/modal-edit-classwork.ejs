@@ -1,0 +1,43 @@
+<div class="modal fade bd-example-modal-lg" id="editClassworkModalScrollable" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form id="classwork-edit-profile" enctype="multipart/form-data">
+          <input class="form-control" type="hidden" value="<%= classroomId %>" name="group" id="edit-groupIdRef" />
+
+
+          <div class="mb-3 row">
+            <label for="edit-title-input" class="col-md-3 col-form-label">Title</label>
+            <div class="col-md-9">
+              <input class="form-control" type="text" value="" name="title" id="edit-title-input" />
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="edit-deadline-input" class="col-md-3 col-form-label">Deadline</label>
+            <div class="col-md-9">
+              <input class="form-control" type="datetime-local" value="" name="deadline" id="edit-deadline-input" />
+            </div>
+          </div>
+
+          <div class="mb-3 row" id="div-attachment">
+            <label for="edit-attachment-input" class="col-md-3 col-form-label">Attachment</label>
+            <div class="col-md-9">
+              <input class="form-control" type="file" name="docs" id="edit-atttachment-input" multiple />
+              <div id="show-attachment"></div>
+            </div>
+          </div>
+          <textarea class="form-control" id="edit-description-input" name="description"></textarea>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-light" data-bs-dismiss="modal">
+              Close
+            </button>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

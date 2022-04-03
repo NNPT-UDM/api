@@ -1,0 +1,39 @@
+<div class="modal fade" id="diagnoseFormFillModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-lg modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+          <h5 class="modal-title mt-0">Add New Diagnose</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div> -->
+      <div class="modal-body">
+        <form id="diagnoseFormFill" action="<%= api %>/diagnostic/add" method="POST">
+          <div class="mb-3 row">
+            <label for="diagnoseType" class="col-md-3 my-2">Type</label>
+            <div class="col-md-9">
+              <input class="form-control" type="text"" name="type" id="diagnoseType" required/>
+            </div>
+          </div>
+
+          <div class="mb-3 row">
+            <label  class="control-label col-md-3">Select Skills: </label>
+            <div class="col-md-9">
+              <select class="form-select" name="skill" id="diagnoseSkill" required>
+                <option value="" selected disabled>---Select Skill---</option>
+                <% skills.forEach(function(skill){ %>
+                <option value="<%= skill._id %>"><%= skill.name %></option>
+                <% }); %>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+        <button type="submit" form="diagnoseFormFill" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

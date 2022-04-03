@@ -1,0 +1,98 @@
+<%- contentFor('HeaderCss') %>
+
+<!-- DataTables -->
+<link href="libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+<!-- Responsive datatable examples -->
+<link href="libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+<%- contentFor('breadcrumb') %>
+
+<%- contentFor('body') %>
+<!-- start page title -->
+<div class="row">
+  <div class="col-12">
+    <div class="page-title-box d-flex align-items-center justify-content-between">
+      <h4 class="mb-0">User List</h4>
+
+      <div class="page-title-right">
+        <ol class="breadcrumb m-0">
+          <li class="breadcrumb-item"><a href="javascript: void(0);">Contacts</a></li>
+          <li class="breadcrumb-item active">User List</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end page title -->
+
+<input type="hidden" id="me" value="<%= JSON.stringify(user) %>" />
+<input type="hidden" class="api-path" value="user" />
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="row mb-2">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <div class="btn-group me-1">
+                <select class="form-select" name="host" id="selectRoleView">
+                </select>
+              </div>
+              <!-- /btn-group -->
+              <% if(!["teacher", "student"].includes(user.role.slug)){%>
+              <a href="javascript:void(0);" class="btn btn-success waves-effect waves-light  " id="btnAddUser" data-bs-toggle="modal" data-bs-target="#userProfileFormFillModal"><i class="mdi mdi-plus me-2"></i> Add New</a>
+              <a href="javascript:void(0);" class="btn btn-primary waves-effect waves-light  " id="btnAddUser" data-bs-toggle="modal" data-bs-target="#userImportFormFillModal"><i class="mdi mdi-plus me-2"></i>Import Sheet</a>
+              <% } %>
+            </div>
+          </div>
+        </div>
+        <!-- end row -->
+        <table id="hrdatatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%">
+          <thead>
+            <tr>
+              <th scope="col" style="width: 50px">
+                <div class="form-check font-size-16">
+                  <input type="checkbox" class="form-check-input" id="contacusercheck" />
+                  <label class="form-check-label" for="contacusercheck"></label>
+                </div>
+              </th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Activated</th>
+              <th scope="col">Last access</th>
+              <th scope="col" style="width: 200px">Action</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end row -->
+<%- include("../Users/modals/user-profile-form-fill") %>
+<%- include("../Users/modals/user-classroom-form-fill") %>
+<%- include("../Users/modals/user-import-form-fill") %>
+<%- include("../Classrooms/modals/assigned-classroom-modal") %>
+
+<%- contentFor('FooterJs') %>
+<!-- Required datatable js -->
+<script src="libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- Responsive examples -->
+<script src="libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+<!-- Datatable init js -->
+<script src="js/pages/users/user-datatables.js"></script>
+
+<!-- Modal belong to user profile -->
+<script src="js/pages/users/user-profile-form-fill.js"></script>
+<script src="js/pages/users/user-import-form-fill.js"></script>
+<!-- Modal belong to classroom -->
+<script src="js/pages/users/user-classroom-form-fill.js"></script>
+<script src="js/pages/classroom/assigned-classroom.js"></script>
+
+<%- contentFor('BottomJs') %>

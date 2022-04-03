@@ -1,0 +1,25 @@
+<div id="nav-lessons" role="tabpanel" aria-labelledby="nav-lessons-tab" class="tab-pane fade mt-3">
+  <div class="row mb-2">
+    <div class="col-md-6">
+      <div class="mb-3">
+        <!-- /btn-group -->
+        <% if(![ "student"].includes(user.role.slug)){%>
+        <a href="javascript:void(0);" class="btn btn-success waves-effect waves-light btn-new-lesson" id="add-new-lesson" data-bs-toggle="modal" data-bs-target="#lessonFormFillModal"><i class="mdi mdi-plus me-2"></i>Add Lesson</a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+  <!-- end row -->
+  <table id="lessondatatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%">
+    <thead>
+      <tr>
+        <th class="text-center" scope="col">ON</th>
+        <th scope="col">Title</th>
+        <th scope="col">Date</th>
+        <th scope="col" style="width: 200px">Action</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+<%- include("./modals/lesson-form-fill") %>

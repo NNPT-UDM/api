@@ -1,0 +1,70 @@
+<%- contentFor('HeaderCss') %>
+
+<!-- DataTables -->
+<link href="libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+<!-- Responsive datatable examples -->
+<link href="libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+<%- contentFor('breadcrumb') %>
+
+<!-- start page title -->
+<div class="row">
+  <div class="col-12">
+    <div class="page-title-box d-flex align-items-center justify-content-between">
+      <h4 class="mb-0">Classes</h4>
+      <div class="page-title-right">
+        <ol class="breadcrumb m-0">
+          <li class="breadcrumb-item"><a href="javascript: void(0);">My Students</a></li>
+          <li class="breadcrumb-item active">Classes</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end page title -->
+
+<%- contentFor('body') %>
+<input type="hidden" id="me" name="me" value="<%= JSON.stringify(user) %>" />
+<input type="hidden" id="classroomApi" />
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="row mb-2">
+        </div>
+        <!-- end row -->
+        <table id="classroomdatatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%">
+          <thead>
+            <tr>
+              <th class="text-center" scope="col">ON</th>
+              <th scope="col">Name</th>
+              <th scope="col">Teacher</th>
+              <th scope="col">Type</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Activated</th>
+              <th scope="col" style="width: 200px">Action</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end row -->
+
+<%- contentFor('FooterJs') %>
+<!-- Required datatable js -->
+<script src="libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- Responsive examples -->
+<script src="libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+<!-- Datatable init js -->
+<script src="js/pages/classroom/classroom-datatables.js"></script>
+
+<%- contentFor('BottomJs') %>

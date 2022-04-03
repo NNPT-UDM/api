@@ -1,0 +1,25 @@
+<div class="modal fade" id="userNoteFormFillModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form id="userNoteFormFill" method="POST" action="<%= api %>/learning_note/add" novalidate>
+          <input type="hidden" class="form-control" id="noteGroupId" name="group">
+          <input type="hidden" class="form-control" id="noteOwnerId" name="owner">
+          <div class="mb-3 row">
+            <label for="selectRoleImport" class="col-12 col-form-label">Note</label>
+            <div class="col-12">
+              <textarea class="form-control" name="content" id="noteContent"></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+        <button type="submit" form="userNoteFormFill" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

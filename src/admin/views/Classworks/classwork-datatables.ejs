@@ -1,0 +1,25 @@
+<div id="nav-classworks" role="tabpanel" aria-labelledby="nav-classworks-tab" class="tab-pane fade mt-3">
+  <div class="row mb-2">
+    <div class="col-md-6">
+      <div class="mb-3">
+        <% if(![ "student"].includes(user.role.slug)){%>
+        <a href="javascript:void(0);" class="btn btn-success waves-effect waves-light  " id="add-new-classwork" data-bs-toggle="modal" data-bs-target="#classworkFormFillModal"><i class="mdi mdi-plus me-2"></i> Add Homework</a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+  <!-- end row -->
+  <table id="classworkdatatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%">
+    <thead>
+      <tr>
+        <th class="text-center" scope="col">ON</th>
+        <th scope="col">Title</th>
+        <th scope="col">Deadline</th>
+        <th scope="col">Submit</th>
+        <th scope="col" style="width: 200px">Action</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+<%- include("../Classworks/modals/classwork-form-fill") %>

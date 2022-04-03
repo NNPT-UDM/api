@@ -1,0 +1,10 @@
+const { BaseApiControllers } = require("../../base/controllers.base");
+const { TemplateServices } = require("../services/_name.services");
+
+class TemplateApiControllers extends BaseApiControllers {
+	constructor() {
+		super(TemplateServices);
+	}
+}
+
+module.exports = new TemplateApiControllers();

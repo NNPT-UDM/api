@@ -1,0 +1,63 @@
+<div
+  class="modal fade bd-example-modal-lg"
+  id="classworkFormFillModal"
+  tabindex="-1"
+  role="dialog"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form
+          id="classworkFormFill"
+          action="<%= api %>/classwork/add"
+          method="POST"
+          enctype="multipart/form-data"
+          novalidate
+        >
+          <input
+            class="form-control"
+            type="hidden"
+            value="<%= classroomId %>"
+            name="group"
+            id="classworkIdRef"
+          />
+          <div class="mb-3 row">
+            <label for="classworkTitle" class="col-md-3 col-form-label">Title</label>
+            <div class="col-md-9">
+              <input class="form-control" type="text" name="title" id="classworkTitle" required />
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="classworkDeadline" class="col-md-3 col-form-label">Deadline</label>
+            <div class="col-md-9">
+              <input
+                class="form-control"
+                type="datetime-local"
+                name="deadline"
+                id="classworkDeadline"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="mb-3 row">
+            <label for="classworkFiles" class="col-md-3 col-form-label">Attachment</label>
+            <div class="col-md-9">
+              <input class="form-control" type="file" name="docs" id="classworkFiles" multiple />
+              <div id="show-attachment"></div>
+            </div>
+          </div>
+          <textarea class="form-control" id="classworkDesc" name="description" required></textarea>
+        </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+          <button type="submit" form="classworkFormFill" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

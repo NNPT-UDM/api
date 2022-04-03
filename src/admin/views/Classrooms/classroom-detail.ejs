@@ -1,0 +1,86 @@
+<%- contentFor('HeaderCss') %>
+<!-- select2 css -->
+<link href="libs/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+<!-- DataTables -->
+<link href="libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+<!-- Responsive datatable examples -->
+<link href="libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+<%- contentFor('breadcrumb') %>
+
+<!-- start page title -->
+<div class="row">
+  <div class="col-12">
+    <div class="page-title-box d-flex align-items-center justify-content-between">
+      <h4 class="mb-0" id="classroomName"></h4>
+      <div class="page-title-right">
+        <ol class="breadcrumb m-0">
+          <li class="breadcrumb-item">
+            <a href="javascript: void(0);">Contacts</a>
+          </li>
+          <li class="breadcrumb-item active">User List</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end page title -->
+<%- contentFor('body') %>
+<input type="hidden" id="me" name="me" value="<%= JSON.stringify(user) %>" />
+<input type="hidden" id="classroomId" value="<%= classroomId %>" />
+<input type="hidden" id="qtyMems" />
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body">
+        <ul id="classroomTabs" class="nav nav-tabs" role="tablist">
+          <li class="nav-item">
+            <a data-toggle="tab" href="#nav-students" role="tab" aria-controls="nav-students" aria-selected="true" id="nav-students-tab" class="nav-link active">Students</a>
+          </li>
+          <li class="nav-item">
+            <a data-toggle="tab" href="#nav-diagnoses" role="tab" aria-controls="nav-diagnoses" aria-selected="false" id="nav-diagnoses-tab" class="nav-link">Logbook</a>
+          </li>
+          <li class="nav-item">
+            <a data-toggle="tab" href="#nav-lessons" role="tab" aria-controls="nav-lessons" aria-selected="false" id="nav-lessons-tab" class="nav-link">Lessons</a>
+          </li>
+          <li class="nav-item">
+            <a data-toggle="tab" href="#nav-classworks" role="tab" aria-controls="nav-classworks" aria-selected="false" id="nav-classworks-tab" class="nav-link">Classworks</a>
+          </li>
+          <li class="nav-item">
+            <a data-toggle="tab" href="#nav-documentation" role="tab" aria-controls="nav-documentation" aria-selected="false" id="nav-documentation-tab" class="nav-link">Documentation</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <%- include("./classroom-mems-datatables") %> <%- include("../Lessons/lesson-datatables") %> <%-
+          include("../Classworks/classwork-datatables") %> <%- include("./classroom-document") %> <%-
+          include("../Diagnoses/diagnoses-datatables") %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- contentFor('FooterJs') %>
+<!-- Required datatable js -->
+<script src="libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+
+<!-- Responsive examples -->
+<script src="libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+<script src="libs/apexcharts/apexcharts.min.js"></script>
+<!--tinymce js-->
+<script src="libs/tinymce/tinymce.min.js"></script>
+<!-- Datatable init js -->
+<script src="js/pages/classroom/classroom-detail.js"></script>
+<!-- form fill -->
+<script src="js/pages/users/user-skill-form-fill.js"></script>
+<script src="js/pages/users/user-note-form-fill.js"></script>
+<script src="js/pages/lesson/lesson-form-fill.js"></script>
+<script src="js/pages/reviews/review-form-fill.js"></script>
+<script src="js/pages/classwork/classwork-form-fill.js"></script>
+<script src="js/pages/diagnose/diagnoses-classroom-form-fill.js"></script>
+<%- contentFor('BottomJs') %>

@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>parseJsonFromForm: Form To JSON Plugin Examples</title>
+<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.0.1/morph/bootstrap.min.css">
+<style>
+h2 { margin: 2rem auto; font-size: 1.25rem; }
+</style>
+</head>
+
+<body><div id="jquery-script-menu">
+<div class="jquery-script-center">
+<ul>
+<li><a href="https://www.jqueryscript.net/form/parse-json-field-value.html">Download This Plugin</a></li>
+<li><a href="https://www.jqueryscript.net/">Back To jQueryScript.Net</a></li>
+</ul><div id="carbon-block"></div>
+<div class="jquery-script-ads"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-2783044520727903";
+/* jQuery_demo */
+google_ad_slot = "2780937993";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+<div class="jquery-script-clear"></div>
+</div>
+</div>
+  <div class="container">
+    <h1>parseJsonFromForm: Form To JSON Plugin Examples</h1>
+    <p class="lead">A simple form to JSON jQuery plugin that generates nested JSON objects from your form data, compared to flat JSON arrays using serializeArray() jQuery method.</p>
+    <form id="example">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">First Name</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" name="first-name" aria-describedby="emailHelp" value="Type Something...">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Last Name</label>
+    <input class="form-control" name="last-name" id="exampleInputPassword1" value="Type Something...">
+  </div>
+</form>
+<h2>Output With serializeArray()</h2>
+<pre class="alert alert-warning" id="output1"></pre>
+<h2>Output With parseJsonFromForm()</h2>
+<pre class="alert alert-warning" id="output2"></pre>
+  </div>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script src="dist/parseJsonFromForm.js"></script>
+<script>
+  $( "input" ).keyup(function() {
+  json1 = jQuery('#example').serializeArray();
+  const myJSON1 = JSON.stringify(json1);
+ $( "#output1" ).html(myJSON1);
+ json2 = parseJsonFromForm(jQuery('#example').serializeArray());
+  const myJSON2 = JSON.stringify(json2);
+ $( "#output2" ).html(myJSON2);
+});
+
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script>
+try {
+  fetch(new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", { method: 'HEAD', mode: 'no-cors' })).then(function(response) {
+    return true;
+  }).catch(function(e) {
+    var carbonScript = document.createElement("script");
+    carbonScript.src = "//cdn.carbonads.com/carbon.js?serve=CK7DKKQU&placement=wwwjqueryscriptnet";
+    carbonScript.id = "_carbonads_js";
+    document.getElementById("carbon-block").appendChild(carbonScript);
+  });
+} catch (error) {
+  console.log(error);
+}
+</script>
+</body>
+</html>
