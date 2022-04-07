@@ -4,7 +4,7 @@ const { ProductMiddleware } = require("../middlewares/models/product.models.midd
 
 const definition = {
   name: { type: String },
-  photos: [{ type: String }],
+  photo: { type: objectId, ref: "Attachment" },
   videos: [{ type: String }],
   quality: { type: String },
   qty: { type: Number },
@@ -21,11 +21,10 @@ const definition = {
   // list keyword related
   keywords: [{ type: objectId, ref: "Keyword" }],
   // list categories
-  categories: [{ type: objectId, ref: "Category" }],
-  manufacturer: {
-    name: { type: String },
-    brand: { type: String },
-  },
+
+  manufacturer: [{ name: { type: String }, context: { type: String } }],
+  category: { type: objectId, ref: "Category" },
+  brand: { type: objectId, ref: "Brand" },
 };
 
 class ProductModel extends BaseModels {

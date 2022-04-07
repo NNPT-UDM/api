@@ -56,7 +56,14 @@ class AttachmentMiddlewares {
     };
     next();
   }
-
+  async productPhoto(req, res, next) {
+    const { file_info } = req.body;
+    if (!file_info) return next();
+    req.body = {
+      photo: file_info._id,
+    };
+    next();
+  }
   async imported(req, res, next) {
     req.redirect(`/${req.body.file_info?.fieldname}/${req.body.file_info?.filename}`);
     next();

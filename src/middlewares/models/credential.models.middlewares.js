@@ -28,6 +28,22 @@ module.exports.CredentialMiddleware = (schema) => {
     }
     next();
   });
+
+  schema.pre(/^findOneAnd/, function (next) {
+    const { phone, email } = this.getUpdate();
+    switch (true) {
+      case [undefined, null, ""].includes(phone):
+        delete this.getUpdate().phone;
+        break;
+      case [undefined, null, ""].includes(email):
+        delete this.getUpdate().email;
+        break;
+      default:
+        break;
+    }
+    console.log(this.getUpdate());
+    next();
+  });
   schema.pre("save", async function (next) {
     try {
       // Only run this function if password was actually modified

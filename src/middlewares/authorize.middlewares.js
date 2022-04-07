@@ -74,11 +74,11 @@ class AuthMiddlewares {
         // authorize based on user role
         async (req, res, next) => {
           const user = req.user;
-          const notGuest = RolesContants.Guest !== user.role.slug;
+
           const userPermissions = [...new Set([...user.role.permissions, ...user.permissions_expanded])];
           // data: _id, username, role, flags, status, permissions
           const permitted = OperatorsUtils.intersection(permissions, userPermissions);
-          if (notGuest && permitted?.length && user?.activated) {
+          if (permitted?.length && user?.activated) {
             let query = PermissionsConstants.permission(user.role.range, permitted);
             query = [qs.stringify(req.query), query.join("&")].join("&");
             req.query = qs.parse(query);

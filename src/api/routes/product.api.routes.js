@@ -19,14 +19,24 @@ class ProductApiRoutes extends C2TRouter {
       method: this.POST,
       handler: controller.add.bind(controller),
       permissions: [0],
-      middlewares: [this.middlewares.attachment.photosFromBase64, this.middlewares.upload.array("videos")],
+      middlewares: [
+        this.middlewares.alias.getMe,
+        this.middlewares.upload.single("prod_photo"),
+        this.middlewares.attachment.singleFileInfoStorage,
+        this.middlewares.attachment.productPhoto,
+      ],
     },
     {
       path: "/edit/:id",
       method: this.PUT,
       handler: controller.edit.bind(controller),
       permissions: [0],
-      middlewares: [this.middlewares.attachment.photosFromBase64, this.middlewares.upload.array("videos")],
+      middlewares: [
+        this.middlewares.alias.getMe,
+        this.middlewares.upload.single("prod_photo"),
+        this.middlewares.attachment.singleFileInfoStorage,
+        this.middlewares.attachment.productPhoto,
+      ],
     },
     {
       path: "/delete/:id",

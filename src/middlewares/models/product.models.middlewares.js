@@ -3,4 +3,8 @@ module.exports.ProductMiddleware = (schema) => {
     const sale = this.price.sell * [(100 - (this.price.discount || 0)) / 100];
     return Number(sale.toFixed(2));
   });
+  schema.pre("findOne", function (next) {
+    this.populate("photo", "fieldname filename").populate("category", "name");
+    next();
+  });
 };

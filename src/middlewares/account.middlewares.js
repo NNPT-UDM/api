@@ -6,6 +6,7 @@ const { SettingModel } = require("../models/setting.models");
 const { UserModel } = require("../models/user.models");
 const { UserLearningModel } = require("../models/user_learning.models");
 const { trimObj, objectId } = require("../utils/common.utils");
+const { selectFields } = require("../utils/select_fields.utils");
 
 const setLearningSpace = async (body) => {
   UserLearningModel.findOne({ _id: body._id }, async function (err, doc) {
@@ -49,7 +50,7 @@ class AccountMiddlewares {
 
   async setupAccount(req, res, next) {
     try {
-      const body = req.body;
+      const body = selectFields(req.body, req.query.fields || null);
       const method = req.method;
 
       switch (method) {
@@ -69,11 +70,12 @@ class AccountMiddlewares {
               "settings",
               "credential"
             );
+            // console.log("Body", body);
             await CredentialModel.findOneAndUpdate({ _id: credential._id }, body);
             await ProfileModel.findOneAndUpdate({ _id: profile._id }, body);
-            if (req.query.fields.includes("settings")) {
-              await SettingModel.findOneAndUpdate({ _id: settings._id }, body);
-            }
+            // if (req.query.fields.includes("settings")) {
+            //   await SettingModel.findOneAndUpdate({ _id: settings._id }, body);
+            // }
           }
           break;
         default:

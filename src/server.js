@@ -48,10 +48,10 @@ class Server {
   initDatabase() {
     // connect to database
     mongoose.connect(
-      // NODE_ENV === "development"
-      //   ? DB_LOCAL
-      //   : DB_LOCAL.replace("localhost", "db"),
-      DB_ATLAS,
+      NODE_ENV === "development"
+        ? DB_LOCAL
+        : DB_LOCAL.replace("localhost", "db"),
+      // DB_ATLAS,
       {
         useCreateIndex: true,
         useNewUrlParser: true,
