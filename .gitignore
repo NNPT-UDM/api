@@ -107,7 +107,7 @@ typings/
 
 #
 package-lock.json
-uploads/
+
 media/
 tmp/
 .idea/
