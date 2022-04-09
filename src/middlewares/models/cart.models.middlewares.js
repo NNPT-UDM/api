@@ -1,6 +1,6 @@
 module.exports.CartMiddleware = (schema) => {
     schema.pre(/^findOne/, function (next) {
-        this.populate("products", "name photos qty price");
+        this.populate("items.products");
         next();
     });
 

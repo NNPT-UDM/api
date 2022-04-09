@@ -32,11 +32,7 @@ class C2TRouter extends Methods {
     // Returns Router object, which we will use in Server class
     for (const route of this.routes) {
       if (app === "api") {
-        const regExpress =
-          /\b(login|register|forgot-password|check-token|reset-password|logout|(product|skill)+[/]+(view))\b/g;
-        if (!regExpress.test(`${this.path}/${route.path}`)) {
-          this.router.use(route.path, this.middlewares.auth.verify(route.permissions));
-        }
+        this.router.use(route.path, this.middlewares.auth.verify(route.permissions));
       } else if (app === "dash") {
         if (!["auth", "error"].includes(this.path)) {
           this.router.use(route.path, this.middlewares.auth.isLoggedIn);

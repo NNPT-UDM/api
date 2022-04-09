@@ -16,7 +16,7 @@ class CommonUtils {
       fields = [fields, expands].toString().split(",").join(" ");
       filters = selectFields(filters, "_id,slug");
       // console.log("current_query", filters);
-      const data = await model.findOne(filters).lean({ virtuals: true, defaults: true }).select(fields);
+      const data = await model.findOne(filters).select(fields);
       return data;
     } catch (error) {
       console.log("View Detail 💥", error);

@@ -30,7 +30,7 @@ module.exports = {
   KEY_SECRET_SESSION: process.env.KEY_SECRET_SESSION,
   JWT_EXPIRE_IN: 14 * 30 * 24 * 60 * 60,
   JWT_COOKIE_EXPIRE_IN: 14 * 24 * 60 * 60 * 1000,
-  CACHE_EXPIRE: 30,
+  CACHE_EXPIRE: 1,
   REDIS_PORT: process.env.REDIS_PORT || 6379,
   REDIS_HOST: process.env.REDIS_HOST,
 

@@ -61,13 +61,11 @@ class AuthMiddlewares {
 
   verify(permissions) {
     try {
-      // if (permissions.length <= 0) {
-      //   return (req, res, next) =>
-      //     res.status(401).json({
-      //       success: 0,
-      //       message: "Account Denied",
-      //     });
-      // }
+      if (permissions.length <= 0) {
+        return (req, res, next) => {
+          return next();
+        };
+      }
       return [
         // authenticate
         this.authenticate,

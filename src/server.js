@@ -53,10 +53,8 @@ class Server {
         : DB_LOCAL.replace("localhost", "db"),
       // DB_ATLAS,
       {
-        useCreateIndex: true,
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        useFindAndModify: false,
       },
       (err) => {
         assert.equal(null, err);
