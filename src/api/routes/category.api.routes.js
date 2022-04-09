@@ -11,7 +11,7 @@ class CategoryApiRoutes extends C2TRouter {
 			path: "/view",
 			method: this.GET,
 			handler: controller.view.bind(controller),
-			permissions: [0],
+			permissions: [],
 			middlewares: [],
 		},
 		{
