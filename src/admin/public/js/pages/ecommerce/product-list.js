@@ -27,38 +27,38 @@ function generateProductListTable() {
         data: null,
         render: function (data, type, full, meta) {
           console.log(data);
-          const { photos } = data;
+          const { photo } = data;
           var photoDefault =
             '<div class="avatar-lg d-inline-block me-2">' +
             '<span class="avatar-title rounded bg-light text-body">' +
             data?.name[0].toUpperCase() +
             "</span>" +
             "</div>";
-          var photo;
+          var photoCur;
           try {
-            photo = photos[0];
-            if (photo && photo !== "") {
-              if (!isValidWebUrl(photo)) {
-                photo = `${photo}`;
+            photoCur = `/${photo.fieldname}/${photo?.filename}`;
+            if (photoCur && photoCur !== "") {
+              if (!isValidWebUrl(photoCur)) {
+                photoCur = `${photoCur}`;
               }
-              photo = `<img src="${photo}" alt="" class="avatar-lg rounded me-2" style="object-fit: contain;">`;
+              photoCur = `<img src="${photoCur}" alt="" class="avatar-lg rounded me-2" style="object-fit: contain;">`;
             } else {
-              photo = photoDefault;
+              photoCur = photoDefault;
             }
           } catch (error) {
-            photo = photoDefault;
+            photoCur = photoDefault;
           }
           var name = data?.name.length > 30 ? `${data?.name.slice(0, 30)}...` : data.name;
 
           return `<div class="d-flex justify-content-start align-items-center">
-          ${photo} <div><p class="text-justify" >${name}</p></div>
+          ${photoCur} <div><p class="text-justify" >${name}</p></div>
           </div>`;
         },
       },
       {
-        data: null,
+        data: "category",
         render: function (data, type, full, meta) {
-          return data;
+          return data.name;
         },
       },
       {
@@ -80,7 +80,7 @@ function generateProductListTable() {
         render: function (data, type, full, meta) {
           var btns = [
             {
-              id: `btnEditAnswer`,
+              id: `btnEditProduct`,
               icon: "bx bxs-edit",
               extra_class: "btn-primary",
               attrs: 'data-bs-toggle="modal" data-bs-target="#classworkMarkFormFillModal"',
@@ -92,12 +92,12 @@ function generateProductListTable() {
     ],
   };
   var table = $("#productlistdatatable").DataTable(tableOptions);
-  //   table.on("click", "button#btnEditAnswer", function () {
+  //   table.on("click", "button#btnEditProduct", function () {
   //     var tr = $(this).closest("tr");
   //     var row = table.row(tr);
   //     var data = row.data();
   //     switch ($(this).attr("id")) {
-  //       case `btnEditAnswer`:
+  //       case `btnEditProduct`:
   //         console.log(data);
   //         let dataMark = data.corrections;
   //         if (!!dataMark) {

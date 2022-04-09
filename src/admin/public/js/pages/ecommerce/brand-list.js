@@ -30,6 +30,12 @@ function generateBrandListTable() {
           return data;
         },
       },
+      {
+        data: "slug",
+        render: function (data, type, full, meta) {
+          return data;
+        },
+      },
 
       {
         data: null,

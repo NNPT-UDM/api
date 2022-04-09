@@ -30,6 +30,12 @@ function generateProductListTable() {
         },
       },
       {
+        data: "slug",
+        render: function (data, type, full, meta) {
+          return data;
+        },
+      },
+      {
         data: null,
         render: function (data, type, full, meta) {
           var btns = [

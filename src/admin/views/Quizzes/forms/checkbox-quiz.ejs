@@ -1,9 +1,0 @@
-<div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="<%= question._id %> ">
-  <% question.alternatives.forEach(answer => { %>
-  <label class="options" for="<%= answer._id %>"><%= answer.text %>
-    <input id="<%= answer._id %>" type="checkbox" name="checkbox-<%= question._id %>" value="<%= answer._id %>" />
-    <span class="checkmark"></span>
-    </span>
-  </label>
-  <% }) %>
-</div>

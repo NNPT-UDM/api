@@ -87,86 +87,6 @@ class PageController {
       });
     }
   }
-  async classDetail(req, res, next) {
-    const { id } = req.params;
-    const skills = await SkillModel.find();
-    try {
-      render({
-        response: res,
-        title: req.i18n_texts.User_List,
-        view: "Classrooms/classroom-detail",
-        data: {
-          classroomId: id,
-          skills: skills,
-        },
-      });
-    } catch (error) {
-      console.log(error);
-      renderErrorPage({
-        response: res,
-        title: "Internal Server Error",
-        statusCode: error.statusCode || 500,
-      });
-    }
-  }
-  async classworkListByIdPage(req, res, next) {
-    const { id } = req.params;
-
-    try {
-      render({
-        response: res,
-        title: req.i18n_texts.User_List,
-        view: "Classwork/classwork-datatables",
-        data: {
-          classroomId: id,
-        },
-      });
-    } catch (error) {
-      console.log(error);
-      renderErrorPage({
-        response: res,
-        title: "Internal Server Error",
-        statusCode: error.statusCode || 500,
-      });
-    }
-  }
-  async classworkPage(req, res, next) {
-    const { id, classroomId } = req.params;
-    try {
-      render({
-        response: res,
-        title: req.i18n_texts.User_List,
-        view: "Classworks/classwork-detail",
-        data: {
-          classworkId: id,
-          classroomId: classroomId,
-        },
-      });
-    } catch (error) {
-      console.log(error);
-      renderErrorPage({
-        response: res,
-        title: "Internal Server Error",
-        statusCode: error.statusCode || 500,
-      });
-    }
-  }
-  async myClassrooms(req, res, next) {
-    try {
-      render({
-        response: res,
-        title: req.i18n_texts.User_List,
-        view: "Classrooms/assigned-classroom-datatables",
-      });
-    } catch (error) {
-      console.log(error);
-      renderErrorPage({
-        response: res,
-        title: "Internal Server Error",
-        statusCode: error.statusCode || 500,
-      });
-    }
-  }
 
   async userGridPage(req, res, next) {
     try {
@@ -193,118 +113,7 @@ class PageController {
       view: "HR/contacts-profile",
     });
   }
-  async quizDetail(req, res, next) {
-    const { id } = req.params;
-    const quiz = await QuizServices.view({ _id: id }, Options.DETAIL);
-    render({
-      response: res,
-      title: "Quiz",
-      view: "Quizzes/quiz-detail",
-      data: { quizInfo: quiz },
-    });
-  }
-  async quizList(req, res, next) {
-    try {
-      const skills = await SkillModel.find();
-      render({
-        response: res,
-        title: "Quiz",
-        view: "Quizzes/quiz-datatables",
-        data: { skills: skills },
-      });
-    } catch (error) {
-      renderErrorPage({
-        response: res,
-        title: "Internal Server Error",
-        statusCode: error.statusCode || 500,
-      });
-    }
-  }
-  async diagnoseList(req, res, next) {
-    const skills = await SkillModel.find();
-    try {
-      render({
-        response: res,
-        title: "Diagnoses",
-        view: "Diagnoses/diagnose-list-datatables",
-        data: { skills: skills },
-      });
-    } catch (error) {
-      renderErrorPage({
-        response: res,
-        title: "Internal Server Error",
-        statusCode: error.statusCode || 500,
-      });
-    }
-  }
-  async courseDetail(req, res, next) {
-    const { id } = req.params;
-    try {
-      render({
-        response: res,
-        title: "Class of Course",
-        view: "Course/course-detail",
-        data: { courseId: id },
-      });
-    } catch (error) {
-      renderErrorPage({
-        response: res,
-        title: "Internal Server Error",
-        statusCode: error.statusCode || 500,
-      });
-    }
-  }
-  async courseList(req, res, next) {
-    const { id } = req.params;
-    try {
-      render({
-        response: res,
-        title: "Courses",
-        view: "course/course-datatables",
-        data: { courseId: id },
-      });
-    } catch (error) {
-      renderErrorPage({
-        response: res,
-        title: "Internal Server Error",
-        statusCode: error.statusCode || 500,
-      });
-    }
-  }
-  async lessonDetail(req, res, next) {
-    const { id, classroomId } = req.params;
-    const lesson = await LessonModel.findById(id);
-    console.log(lesson);
-    try {
-      render({
-        response: res,
-        title: "Reviews",
-        view: "Lessons/lesson-detail",
-        data: { lessonDetail: lesson, classroomId: classroomId },
-      });
-    } catch (error) {
-      renderErrorPage({
-        response: res,
-        title: "Internal Server Error",
-        statusCode: error.statusCode || 500,
-      });
-    }
-  }
-  async reviewList(req, res, next) {
-    try {
-      render({
-        response: res,
-        title: "Reviews",
-        view: "Reviews/review-list",
-      });
-    } catch (error) {
-      renderErrorPage({
-        response: res,
-        title: "Internal Server Error",
-        statusCode: error.statusCode || 500,
-      });
-    }
-  }
+
   async productPage(req, res, next) {
     try {
       // const products = await ProductServices.view({ per_page: 12 }, Options.FILTER);
@@ -312,6 +121,54 @@ class PageController {
         response: res,
         title: "Products",
         view: "Ecommerce/product-list",
+      });
+    } catch (error) {
+      renderErrorPage({
+        response: res,
+        title: "Internal Server Error",
+        statusCode: error.statusCode || 500,
+      });
+    }
+  }
+  async brandPage(req, res, next) {
+    try {
+      // const products = await ProductServices.view({ per_page: 12 }, Options.FILTER);
+      render({
+        response: res,
+        title: "Brands",
+        view: "Ecommerce/brand-list",
+      });
+    } catch (error) {
+      renderErrorPage({
+        response: res,
+        title: "Internal Server Error",
+        statusCode: error.statusCode || 500,
+      });
+    }
+  }
+  async categoryPage(req, res, next) {
+    try {
+      // const products = await ProductServices.view({ per_page: 12 }, Options.FILTER);
+      render({
+        response: res,
+        title: "Categories",
+        view: "Ecommerce/category-list",
+      });
+    } catch (error) {
+      renderErrorPage({
+        response: res,
+        title: "Internal Server Error",
+        statusCode: error.statusCode || 500,
+      });
+    }
+  }
+  async orderPage(req, res, next) {
+    try {
+      // const products = await ProductServices.view({ per_page: 12 }, Options.FILTER);
+      render({
+        response: res,
+        title: "Orders",
+        view: "Ecommerce/order-list",
       });
     } catch (error) {
       renderErrorPage({

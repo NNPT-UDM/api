@@ -58,34 +58,6 @@ class PageDashRoutes extends C2TRouter {
       middlewares: [],
     },
     {
-      path: "/classwork/:id",
-      method: this.GET,
-      handler: controller.classworkListByIdPage,
-      permissions: [0],
-      middlewares: [],
-    },
-    {
-      path: "/classwork/:id/:classroomId",
-      method: this.GET,
-      handler: controller.classworkPage,
-      permissions: [0],
-      middlewares: [],
-    },
-    {
-      path: "/classroom/:id",
-      method: this.GET,
-      handler: controller.classDetail, // admin & staff
-      permissions: [0],
-      middlewares: [],
-    },
-    {
-      path: "/my-classrooms",
-      method: this.GET,
-      handler: controller.myClassrooms, // admin & staff
-      permissions: [0],
-      middlewares: [],
-    },
-    {
       path: "/contacts-grid",
       method: this.GET,
       handler: controller.userGridPage, // exclude student, guest, ...
@@ -93,58 +65,30 @@ class PageDashRoutes extends C2TRouter {
       middlewares: [],
     },
     {
-      path: "/quiz/:id",
-      method: this.GET,
-      handler: controller.quizDetail, // exclude student, guest, ...
-      permissions: [],
-      middlewares: [],
-    },
-    {
-      path: "/courses/:id",
-      method: this.GET,
-      handler: controller.courseDetail, // exclude student, guest, ...
-      permissions: [],
-      middlewares: [],
-    },
-    {
-      path: "/courses",
-      method: this.GET,
-      handler: controller.courseList, // exclude student, guest, ...
-      permissions: [],
-      middlewares: [],
-    },
-    {
-      path: "/lesson/:id/:classroomId",
-      method: this.GET,
-      handler: controller.lessonDetail, // exclude student, guest, ...
-      permissions: [],
-      middlewares: [],
-    },
-    {
-      path: "/reviews/:id",
-      method: this.GET,
-      handler: controller.reviewList, // exclude student, guest, ...
-      permissions: [],
-      middlewares: [],
-    },
-    {
-      path: "/quizzes",
-      method: this.GET,
-      handler: controller.quizList, // exclude student, guest, ...
-      permissions: [],
-      middlewares: [],
-    },
-    {
-      path: "/diagnoses",
-      method: this.GET,
-      handler: controller.diagnoseList, // exclude student, guest, ...
-      permissions: [],
-      middlewares: [],
-    },
-    {
       path: "/ecommerce-products",
       method: this.GET,
       handler: controller.productPage, // exclude student, guest, ...
+      permissions: [],
+      middlewares: [],
+    },
+    {
+      path: "/ecommerce-brands",
+      method: this.GET,
+      handler: controller.brandPage, // exclude student, guest, ...
+      permissions: [],
+      middlewares: [],
+    },
+    {
+      path: "/ecommerce-orders",
+      method: this.GET,
+      handler: controller.orderPage, // exclude student, guest, ...
+      permissions: [],
+      middlewares: [],
+    },
+    {
+      path: "/ecommerce-categories",
+      method: this.GET,
+      handler: controller.categoryPage, // exclude student, guest, ...
       permissions: [],
       middlewares: [],
     },
