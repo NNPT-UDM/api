@@ -4,19 +4,9 @@ const { ProfileModel } = require("../models/profile.models");
 const { RoleModel } = require("../models/role.models");
 const { SettingModel } = require("../models/setting.models");
 const { UserModel } = require("../models/user.models");
-const { UserLearningModel } = require("../models/user_learning.models");
+
 const { trimObj, objectId } = require("../utils/common.utils");
 const { selectFields } = require("../utils/select_fields.utils");
-
-const setLearningSpace = async (body) => {
-  UserLearningModel.findOne({ _id: body._id }, async function (err, doc) {
-    if (doc) {
-      await UserLearningModel.findOneAndUpdate({ _id: doc._id }, body);
-    } else {
-      await UserLearningModel.create(body);
-    }
-  });
-};
 
 class AccountMiddlewares {
   async checkAccountExists(req, res, next) {

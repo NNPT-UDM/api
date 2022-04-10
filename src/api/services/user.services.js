@@ -6,10 +6,10 @@ const { objectId } = require("../../utils/common.utils");
 const { ProfileModel } = require("../../models/profile.models");
 const { SettingModel } = require("../../models/setting.models");
 const { RolesContants } = require("../../constants/roles.constants");
-const { UserLearningModel } = require("../../models/user_learning.models");
+
 const { RoleModel } = require("../../models/role.models");
 const { UserModel } = require("../../models/user.models");
-const { GroupModel } = require("../../models/group.models");
+
 class UserServices extends BaseServices {
   constructor() {
     super(UserModel);
@@ -50,14 +50,9 @@ class UserServices extends BaseServices {
       await ProfileModel.create(data);
       await SettingModel.create(data);
       const { name, slug } = await RoleModel.findById(roleId);
-      if (slug === RolesContants.Student) await UserLearningModel.create(data);
+
       await UserModel.create(data);
-      if (classroom) {
-        await GroupModel.updateOne(
-          { _id: classroom },
-          { $addToSet: { members: members }, update_at: Date.now() }
-        );
-      }
+     
     }
     // Overwrite worksheet
     workbook.Sheets[sheetName] = XLSX.utils.aoa_to_sheet(newData);
