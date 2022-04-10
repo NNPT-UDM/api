@@ -12,11 +12,14 @@ class CommonUtils {
     try {
       delete query._;
       let queryString = JSON.stringify(query);
+      console.log(queryString);
       let { fields, expands, ...filters } = JSON.parse(queryString);
       fields = [fields, expands].toString().split(",").join(" ");
       filters = selectFields(filters, "_id,slug");
+      console.log(filters);
       // console.log("current_query", filters);
       const data = await model.findOne(filters).select(fields);
+      console.log(data);
       return data;
     } catch (error) {
       console.log("View Detail 💥", error);

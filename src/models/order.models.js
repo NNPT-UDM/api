@@ -23,7 +23,7 @@ const definition = {
     note: { type: String },
   },
   payment_method: { type: objectId, ref: "PaymentMethod" },
-  status: { type: objectId, ref: "OrderStatus" },
+  status: { type: String, default: "Pending" },
 };
 
 class OrderModel extends BaseModels {

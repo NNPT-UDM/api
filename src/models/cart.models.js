@@ -7,9 +7,7 @@ const definition = {
     {
       products: { type: objectId, ref: "Product" },
       qty: { type: Number },
-      quality: { type: String },
-      size: { type: String },
-      colors: { type: objectId },
+
     },
   ],
   shipping_fee: { type: Number, default: 0, select: false },

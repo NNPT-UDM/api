@@ -5,8 +5,9 @@ module.exports.CategoryMiddleware = (schema) => {
     localField: "_id",
   });
 
-  schema.pre(/^findOne/, function (next) {
+  schema.pre("findOne", function (next) {
     this.populate("products");
     next();
   });
+  
 };

@@ -71,7 +71,7 @@ function generateProductListTable() {
         data: null,
         render: function (data, type, full, meta) {
           let { sell } = data?.price;
-          return formatPrice(sell) || "";
+          return `$${sell}` || "";
         },
       },
 

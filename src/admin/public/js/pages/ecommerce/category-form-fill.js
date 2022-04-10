@@ -1,4 +1,4 @@
-$(document).on("submit", "#diagnoseFormFill", function (event) {
+$(document).on("submit", "#categoryFormFill", function (event) {
     event.preventDefault();
     var formData = $(this).serializeFormJSON();
     var request = new XMLHttpRequest();
@@ -9,16 +9,12 @@ $(document).on("submit", "#diagnoseFormFill", function (event) {
       if (request.status === 200) {
         toastr.clear();
         toastr.success("Success");
-        $("#diagnoseFormFillModal").modal("hide");
-        $("#diagnoseFormFill").trigger("Submitted");
+        $("#categoryFormFillModal").modal("hide");
+        $("#categoryFormFill").trigger("Submitted");
       } else {
+        // console.log(request.response);
         toastr.clear();
         toastr.error(JSON.parse(request.response).message || "Error");
       }
     };
   });
-  $("#diagnoseFormFillModal").on("hidden.bs.modal", function () {
-    $("#diagnoseFormFill").changeFormFill(`${api}/diagnostic/add`, "POST");
-    $("#diagnoseFormFill")[0].reset();
-  });
-  

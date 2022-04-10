@@ -4,11 +4,13 @@
 <link href="libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 
 <!-- Responsive datatable examples -->
-<link href="libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+<link
+  href="libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css"
+  rel="stylesheet"
+  type="text/css"
+/>
 
-<%- contentFor('breadcrumb') %>
-
-<%- contentFor('body') %>
+<%- contentFor('breadcrumb') %> <%- contentFor('body') %>
 <!-- start page title -->
 <div class="row">
   <div class="col-12">
@@ -36,19 +38,36 @@
           <div class="col-md-6">
             <div class="mb-3">
               <div class="btn-group me-1">
-                <select class="form-select" name="host" id="selectRoleView">
-                </select>
+                <select class="form-select" name="host" id="selectRoleView"></select>
               </div>
               <!-- /btn-group -->
               <% if(!["teacher", "student"].includes(user.role.slug)){%>
-              <a href="javascript:void(0);" class="btn btn-success waves-effect waves-light  " id="btnAddUser" data-bs-toggle="modal" data-bs-target="#userProfileFormFillModal"><i class="mdi mdi-plus me-2"></i> Add New</a>
-              <a href="javascript:void(0);" class="btn btn-primary waves-effect waves-light  " id="btnAddUser" data-bs-toggle="modal" data-bs-target="#userImportFormFillModal"><i class="mdi mdi-plus me-2"></i>Import Sheet</a>
+              <a
+                href="javascript:void(0);"
+                class="btn btn-success waves-effect waves-light"
+                id="btnAddUser"
+                data-bs-toggle="modal"
+                data-bs-target="#userProfileFormFillModal"
+                ><i class="mdi mdi-plus me-2"></i> Add New</a
+              >
+              <a
+                href="javascript:void(0);"
+                class="btn btn-primary waves-effect waves-light"
+                id="btnAddUser"
+                data-bs-toggle="modal"
+                data-bs-target="#userImportFormFillModal"
+                ><i class="mdi mdi-plus me-2"></i>Import Sheet</a
+              >
               <% } %>
             </div>
           </div>
         </div>
         <!-- end row -->
-        <table id="hrdatatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%">
+        <table
+          id="hrdatatable"
+          class="table table-bordered dt-responsive nowrap"
+          style="border-collapse: collapse; border-spacing: 0; width: 100%"
+        >
           <thead>
             <tr>
               <th scope="col" style="width: 50px">
@@ -71,11 +90,8 @@
   </div>
 </div>
 <!-- end row -->
-<%- include("../Users/modals/user-profile-form-fill") %>
-<%- include("../Users/modals/user-classroom-form-fill") %>
-<%- include("../Users/modals/user-import-form-fill") %>
-<%- include("../Classrooms/modals/assigned-classroom-modal") %>
-
+<%- include("../Users/modals/user-profile-form-fill") %> <%-
+include("../Users/modals/user-classroom-form-fill") %> <%- include("../Users/modals/user-import-form-fill") %>
 <%- contentFor('FooterJs') %>
 <!-- Required datatable js -->
 <script src="libs/datatables.net/js/jquery.dataTables.min.js"></script>
@@ -93,6 +109,5 @@
 <script src="js/pages/users/user-import-form-fill.js"></script>
 <!-- Modal belong to classroom -->
 <script src="js/pages/users/user-classroom-form-fill.js"></script>
-<script src="js/pages/classroom/assigned-classroom.js"></script>
 
 <%- contentFor('BottomJs') %>

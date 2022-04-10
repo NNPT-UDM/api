@@ -5,18 +5,13 @@ const { ProductMiddleware } = require("../middlewares/models/product.models.midd
 const definition = {
   name: { type: String },
   photo: { type: objectId, ref: "Attachment" },
-  videos: [{ type: String }],
-  quality: { type: String },
   qty: { type: Number },
   price: {
     origin: { type: Number, default: 0.0 },
     sell: { type: Number, default: 0.0 },
     discount: { type: Number, default: 0.0 },
   },
-  attrs: {
-    sizes: [{ type: String }],
-    colors: [{ type: String }],
-  },
+ 
   description: { type: String },
   // list keyword related
   keywords: [{ type: objectId, ref: "Keyword" }],

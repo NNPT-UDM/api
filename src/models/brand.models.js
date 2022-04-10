@@ -12,6 +12,7 @@ class BrandModel extends BaseModels {
     this.collection = "brands";
     this.index = { name: "text" };
     this.init({ definition: definition });
+    this.setSlug("name");
     BrandMiddleware(this.schema);
   }
 }

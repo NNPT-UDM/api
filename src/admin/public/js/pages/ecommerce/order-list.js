@@ -1,8 +1,8 @@
 $(document).ready(function () {
-  generateProductListTable();
+  generateOrderListTable();
 });
 
-function generateProductListTable() {
+function generateOrderListTable() {
   var api = $("#api").val();
   var url = `${api}/order/view`;
   var tableOptions = {
@@ -11,6 +11,7 @@ function generateProductListTable() {
       method: "GET",
       dataSrc: function (response) {
         const { data } = response;
+        console.log(data)
         return data || [];
       },
     },
@@ -26,52 +27,46 @@ function generateProductListTable() {
       {
         data: null,
         render: function (data, type, full, meta) {
-          console.log(data);
-          const { photos } = data;
-          var photoDefault =
-            '<div class="avatar-lg d-inline-block me-2">' +
-            '<span class="avatar-title rounded bg-light text-body">' +
-            data?.name[0].toUpperCase() +
+          var avtDefault =
+            '<div class="avatar-xs d-inline-block me-2">' +
+            '<span class="avatar-title rounded-circle bg-light text-body">' +
+            data?.display_name[0].toUpperCase() +
             "</span>" +
             "</div>";
-          var photo;
+          var avt;
           try {
-            photo = photos[0];
-            if (photo && photo !== "") {
-              if (!isValidWebUrl(photo)) {
-                photo = `${photo}`;
+            avt = data?.photo;
+            if (avt && avt !== "") {
+              if (!isValidWebUrl(avt)) {
+                avt = `images/users/${avt}`;
               }
-              photo = `<img src="${photo}" alt="" class="avatar-lg rounded me-2" style="object-fit: contain;">`;
+              avt = `<img src="${avt}" alt="" class="avatar-xs rounded-circle me-2">`;
             } else {
-              photo = photoDefault;
+              avt = avtDefault;
             }
           } catch (error) {
-            photo = photoDefault;
+            avt = avtDefault;
           }
-          var name = data?.name.length > 30 ? `${data?.name.slice(0, 30)}...` : data.name;
 
-          return `<div class="d-flex justify-content-start align-items-center">
-          ${photo} <div><p class="text-justify" >${name}</p></div>
-          </div>`;
+          return `${avt} <a href="#" class="text-body">${data?.display_name}</a>`;
+        },
+      },
+      {
+        data: "create_at",
+        render: function (data, type, full, meta) {
+          return new Date(data).toLocaleString("vi-VN");
         },
       },
       {
         data: null,
         render: function (data, type, full, meta) {
-          return data;
-        },
-      },
-      {
-        data: "qty",
-        render: function (data, type, full, meta) {
-          return data;
+          return "";
         },
       },
       {
         data: null,
         render: function (data, type, full, meta) {
-          let { sell } = data?.price;
-          return formatPrice(sell) || "";
+          `<div><span class="badge "bg-warning" ">Pending</span></div>`;
         },
       },
 

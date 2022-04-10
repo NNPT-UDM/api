@@ -13,6 +13,7 @@ class CategoryModel extends BaseModels {
     this.collection = "categories";
     this.index = { name: "text", group: "text" };
     this.init({ definition: definition });
+    this.setSlug("name");
     CategoryMiddleware(this.schema);
   }
 }

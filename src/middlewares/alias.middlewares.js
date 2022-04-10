@@ -14,7 +14,7 @@ class AliasMiddlewares {
   }
 
   updateUser(req, res, next) {
-    req.query.fields = "profile,role,permissions_expanded,activated";
+    req.query.fields = "display_name,username,email,phone,contacts,bio,gender,role,permissions_expanded,activated";
     // hash password if needed
     next();
   }

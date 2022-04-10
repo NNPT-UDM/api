@@ -1,4 +1,4 @@
-$(document).on("submit", "#quizFormFill", function (event) {
+$(document).on("submit", "#brandFormFill", function (event) {
   event.preventDefault();
   var formData = $(this).serializeFormJSON();
   var request = new XMLHttpRequest();
@@ -9,15 +9,12 @@ $(document).on("submit", "#quizFormFill", function (event) {
     if (request.status === 200) {
       toastr.clear();
       toastr.success("Success");
-      $("#quizFormFillModal").modal("hide");
-      $("#quizFormFill").trigger("Submitted");
+      $("#brandFormFillModal").modal("hide");
+      $("#brandFormFill").trigger("Submitted");
     } else {
+      // console.log(request.response);
       toastr.clear();
       toastr.error(JSON.parse(request.response).message || "Error");
     }
   };
-});
-$("#quizFormFillModal").on("hidden.bs.modal", function () {
-  $("#quizFormFill").changeFormFill(`${api}/quiz/add`, "POST");
-  $("#quizFormFill")[0].reset();
 });

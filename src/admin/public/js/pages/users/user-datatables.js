@@ -276,6 +276,9 @@ $(document).ready(function () {
             if (val === "Student") $("#showSelectClassroom").show();
             else $("#showSelectClassroom").hide();
           });
+          $("#userProfileFormFill").on("Submitted", function (event) {
+            table.ajax.reload(null, false);
+          });
         }
       },
     });

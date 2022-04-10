@@ -51,9 +51,8 @@ class BaseModels {
       if (this[field]) this.slug = makeSlug(this[field]);
       next();
     });
-    this.schema.post(/^findOneAnd/, async function (doc, next) {
-      const { $set } = this.getUpdate();
-      if ($set[field]) await this.updateOne({ _id: doc._id }, { slug: makeSlug($set[field]) });
+    this.schema.pre(/^findOneAnd/, async function ( next) {
+      this.getUpdate().slug = makeSlug(this.getUpdate().$set[field]);
       next();
     });
   }

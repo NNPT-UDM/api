@@ -10,6 +10,7 @@ $(document).on("submit", "#userProfileFormFill", function (event) {
       toastr.clear();
       toastr.success("Success");
       $("#userProfileFormFillModal").modal("hide");
+      $("#userProfileFormFill").trigger("Submitted");
     } else {
       // console.log(request.response);
       toastr.clear();
