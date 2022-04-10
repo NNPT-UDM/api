@@ -1,7 +1,7 @@
 module.exports.OrderMiddleware = (schema) => {
 
-  schema.pre(/^findOne/, function (next) {
-    this.populate("cart").populate("customer");
+  schema.pre(/^find/, function (next) {
+    this.populate("cart").populate("customer","profile");
     next();
   });
 };

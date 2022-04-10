@@ -11,7 +11,7 @@ function generateOrderListTable() {
       method: "GET",
       dataSrc: function (response) {
         const { data } = response;
-        console.log(data)
+        console.log(data);
         return data || [];
       },
     },
@@ -30,7 +30,7 @@ function generateOrderListTable() {
           var avtDefault =
             '<div class="avatar-xs d-inline-block me-2">' +
             '<span class="avatar-title rounded-circle bg-light text-body">' +
-            data?.display_name[0].toUpperCase() +
+            data?.customer?.profile?.display_name[0].toUpperCase() +
             "</span>" +
             "</div>";
           var avt;
@@ -48,7 +48,7 @@ function generateOrderListTable() {
             avt = avtDefault;
           }
 
-          return `${avt} <a href="#" class="text-body">${data?.display_name}</a>`;
+          return `${avt} <a href="#" class="text-body">${data?.customer?.profile?.display_name}</a>`;
         },
       },
       {
@@ -58,15 +58,16 @@ function generateOrderListTable() {
         },
       },
       {
-        data: null,
+        data: "cart",
         render: function (data, type, full, meta) {
-          return "";
+          return data.total_price;
         },
       },
       {
         data: null,
         render: function (data, type, full, meta) {
-          `<div><span class="badge "bg-warning" ">Pending</span></div>`;
+          console.log(data.status)
+          return `<div><span class="badge bg-warning" ">Pending</span></div>`;
         },
       },
 
